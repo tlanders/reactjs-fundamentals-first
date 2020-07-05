@@ -1,23 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
-class Profile extends React.Component {
-    render() {
-        let hobbies = this.props.hobbies.map(hobby => {
-            return <li>{hobby}</li>
-        });
-        return (
-            <div>
-                <h3>{this.props.name}</h3>
-                <p>{this.props.name} is {this.props.age} years old.</p>
-                <p>{this.props.bio}</p>
-                <h3>Hobbies</h3>
-                <ul>{hobbies}</ul>
-            </div>
-        )
-    }
-}
+import Profile from './components/Profile';
+import AddProfile from './components/AddProfile';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -53,7 +40,7 @@ class App extends React.Component {
     return (
         <div className="App">
             {profiles}
-            <button onClick={this.addUser}>Add new profile</button>
+            <AddProfile addUser={this.addUser}/>
         </div>
     );
   }
