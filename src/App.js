@@ -18,10 +18,10 @@ class App extends React.Component {
         this.addUser = this.addUser.bind(this);
     }
 
-    addUser(event) {
-        let user = {name: 'Tim', age: 27, bio: 'Reads a lot', hobbies: ['reading', 'spelling', 'pontificating']};
+    addUser(profile) {
+        // let user = {name: 'Tim', age: 27, bio: 'Reads a lot', hobbies: ['reading', 'spelling', 'pontificating']};
         this.setState({
-            "profiles": this.state.profiles.concat(user)
+            "profiles": this.state.profiles.concat([profile])
         });
     }
 
