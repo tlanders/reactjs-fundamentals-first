@@ -5,6 +5,10 @@ import './App.css';
 import Profile from './components/Profile';
 import AddProfile from './components/AddProfile';
 
+let MyStatelessComponent = props => (
+    <p>{props.hello}</p>
+);
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -39,6 +43,7 @@ class App extends React.Component {
         })
         return (
             <div className="App">
+                <MyStatelessComponent hello="I'm a stateless component"/>
                 {profiles}
                 <AddProfile addUser={this.addUser}/>
             </div>
