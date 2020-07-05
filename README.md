@@ -1,3 +1,6 @@
+# reactjs-fundamentals-first
+First sample app from O'Reilly ReactJS Fundamentals online class
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
