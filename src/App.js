@@ -17,6 +17,49 @@ const MyComponent = props => (
     </div>
 );
 
+let HOCGen = (Component, state) => class extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = state;
+    }
+
+    componentDidMount() {
+        setInterval(() => {
+            this.setState({count: this.state.count + 1});
+        }, 1000);
+    }
+
+    render() {
+        return <Component {...this.props} {...this.state}/>
+    }
+}
+
+class Comp1 extends React.Component {
+    render() {
+        return (
+            <div>
+                <p>Comp1</p>
+                {this.props.count}
+            </div>
+        )
+    }
+}
+
+class Comp2 extends React.Component {
+    render() {
+        return (
+            <div>
+                <p>Comp2</p>
+                {this.props.count}
+            </div>
+        )
+    }
+}
+
+let WrappedComp1 = HOCGen(Comp1, {count: 0});
+let WrappedComp2 = HOCGen(Comp2, {count: 999});
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -33,13 +76,13 @@ class App extends React.Component {
     /**
      * Use this method to load data after the component is mounted.
      */
-    componentDidMount() {
-        getProfiles()
-            .then(profiles => this.setState({
-                profiles: profiles
-            }))
-            .catch(err => console.log(err));
-    }
+    // componentDidMount() {
+    //     getProfiles()
+    //         .then(profiles => this.setState({
+    //             profiles: profiles
+    //         }))
+    //         .catch(err => console.log(err));
+    // }
 
     addUser(profile) {
         // let user = {name: 'Tim', age: 27, bio: 'Reads a lot', hobbies: ['reading', 'spelling', 'pontificating']};
@@ -62,12 +105,10 @@ class App extends React.Component {
         })
         return (
             <div className="App">
+                <WrappedComp1/>
+                <WrappedComp2/>
                 <MyStatelessComponent hello="I'm a stateless component"/>
                 <MyComponent>Some content for my component</MyComponent>
-                <MyComponent>
-                    Some content for a second component
-                    <MyComponent>A sub MyComponent</MyComponent>
-                </MyComponent>
                 {profiles}
                 <AddProfile addUser={this.addUser}/>
             </div>
