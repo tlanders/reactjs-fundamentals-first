@@ -1,10 +1,35 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import PropTypes from 'prop-types';
 
 import Profile from './components/Profile';
 import AddProfile from './components/AddProfile';
 import {getProfiles} from "./utils/profileApi";
+
+class PropTypeComponent extends React.Component {
+    render() {
+        return (
+            <div>
+                <p>Name: {this.props.name}</p>
+                <p>Account: {this.props.account}</p>
+                <p>Balance: {this.props.balance}</p>
+            </div>
+        )
+    }
+}
+
+PropTypeComponent.propTypes = {
+    name: PropTypes.string.isRequired,
+    account: PropTypes.string,
+    balance: PropTypes.number
+};
+
+PropTypeComponent.defaultProps = {
+    name: 'Unknown',
+    account: 'Unknown',
+    balance: 0
+}
 
 const MyStatelessComponent = props => (
     <p>{props.hello}</p>
@@ -57,8 +82,8 @@ class Comp2 extends React.Component {
     }
 }
 
-let WrappedComp1 = HOCGen(Comp1, {count: 0});
-let WrappedComp2 = HOCGen(Comp2, {count: 999});
+// let WrappedComp1 = HOCGen(Comp1, {count: 0});
+// let WrappedComp2 = HOCGen(Comp2, {count: 999});
 
 class App extends React.Component {
     constructor(props) {
@@ -105,10 +130,13 @@ class App extends React.Component {
         })
         return (
             <div className="App">
-                <WrappedComp1/>
-                <WrappedComp2/>
-                <MyStatelessComponent hello="I'm a stateless component"/>
-                <MyComponent>Some content for my component</MyComponent>
+                <PropTypeComponent name='Jimmy' account={'Savings'} balance={3.25}/>
+                <PropTypeComponent name='Sally' account={'Checking'} balance={99.88}/>
+                <PropTypeComponent/>
+                {/*<WrappedComp1/>*/}
+                {/*<WrappedComp2/>*/}
+                {/*<MyStatelessComponent hello="I'm a stateless component"/>*/}
+                {/*<MyComponent>Some content for my component</MyComponent>*/}
                 {profiles}
                 <AddProfile addUser={this.addUser}/>
             </div>
