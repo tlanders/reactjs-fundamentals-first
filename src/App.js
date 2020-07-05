@@ -6,9 +6,16 @@ import Profile from './components/Profile';
 import AddProfile from './components/AddProfile';
 import {getProfiles} from "./utils/profileApi";
 
-// let MyStatelessComponent = props => (
-//     <p>{props.hello}</p>
-// );
+const MyStatelessComponent = props => (
+    <p>{props.hello}</p>
+);
+
+const MyComponent = props => (
+    <div>
+        <h1>My Component</h1>
+        <p>{props.children}</p>
+    </div>
+);
 
 class App extends React.Component {
     constructor(props) {
@@ -55,7 +62,12 @@ class App extends React.Component {
         })
         return (
             <div className="App">
-                {/*<MyStatelessComponent hello="I'm a stateless component"/>*/}
+                <MyStatelessComponent hello="I'm a stateless component"/>
+                <MyComponent>Some content for my component</MyComponent>
+                <MyComponent>
+                    Some content for a second component
+                    <MyComponent>A sub MyComponent</MyComponent>
+                </MyComponent>
                 {profiles}
                 <AddProfile addUser={this.addUser}/>
             </div>
