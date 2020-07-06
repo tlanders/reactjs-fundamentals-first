@@ -11,9 +11,10 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            nextId: 2,
             profiles: [
-                {name: 'Sue', age: 32, bio: 'Likes to swim and stuff', hobbies: ['swimming', 'biking']},
-                {name: 'Bill', age: 41, bio: 'Shoots at everything', hobbies: ['shooting']},
+                {id: 0, name: 'Sue', age: 32, bio: 'Likes to swim and stuff', hobbies: ['swimming', 'biking']},
+                {id: 1, name: 'Bill', age: 41, bio: 'Shoots at everything', hobbies: ['shooting']},
             ]
         };
 
@@ -33,8 +34,10 @@ class App extends React.Component {
 
     addUser(profile) {
         // let user = {name: 'Tim', age: 27, bio: 'Reads a lot', hobbies: ['reading', 'spelling', 'pontificating']};
+        profile.id = this.state.nextId;
         this.setState({
-            "profiles": this.state.profiles.concat([profile])
+            nextId: this.state.nextId + 1,
+            profiles: this.state.profiles.concat([profile])
         });
     }
 
@@ -45,7 +48,7 @@ class App extends React.Component {
                          age={profile.age}
                          bio={profile.bio}
                          hobbies={profile.hobbies}
-                         key={index}
+                         key={profile.id}
                 />
             )
         })
