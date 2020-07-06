@@ -12,8 +12,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             profiles: [
-                // {name: 'Sue', age: 32, bio: 'Likes to swim and stuff', hobbies: ['swimming', 'biking']},
-                // {name: 'Bill', age: 41, bio: 'Shoots at everything', hobbies: ['shooting']},
+                {name: 'Sue', age: 32, bio: 'Likes to swim and stuff', hobbies: ['swimming', 'biking']},
+                {name: 'Bill', age: 41, bio: 'Shoots at everything', hobbies: ['shooting']},
             ]
         };
 
@@ -39,15 +39,14 @@ class App extends React.Component {
     }
 
     render() {
-        let profiles = this.state.profiles.map(profile => {
+        let profiles = this.state.profiles.map((profile, index) => {
             return (
-                <div>
-                    <Profile name={profile.name}
-                             age={profile.age}
-                             bio={profile.bio}
-                             hobbies={profile.hobbies}
-                    />
-                </div>
+                <Profile name={profile.name}
+                         age={profile.age}
+                         bio={profile.bio}
+                         hobbies={profile.hobbies}
+                         key={index}
+                />
             )
         })
         return (
