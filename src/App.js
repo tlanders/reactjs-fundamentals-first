@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Profile from './components/Profile';
 import AddProfile from './components/AddProfile';
 import {getProfiles} from "./utils/profileApi";
+import FocusInputBox from './components/FocusInputBox';
 
 class PropTypeComponent extends React.Component {
     render() {
@@ -130,6 +131,7 @@ class App extends React.Component {
         })
         return (
             <div className="App">
+                <FocusInputBox/>
                 <PropTypeComponent name='Jimmy' account={'Savings'} balance={3.25}/>
                 <PropTypeComponent name='Sally' account={'Checking'} balance={99.88}/>
                 <PropTypeComponent/>
