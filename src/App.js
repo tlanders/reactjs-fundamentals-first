@@ -1,90 +1,11 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import PropTypes from 'prop-types';
 
 import Profile from './components/Profile';
 import AddProfile from './components/AddProfile';
-import {getProfiles} from "./utils/profileApi";
-import FocusInputBox from './components/FocusInputBox';
-
-class PropTypeComponent extends React.Component {
-    render() {
-        return (
-            <div>
-                <p>Name: {this.props.name}</p>
-                <p>Account: {this.props.account}</p>
-                <p>Balance: {this.props.balance}</p>
-            </div>
-        )
-    }
-}
-
-PropTypeComponent.propTypes = {
-    name: PropTypes.string.isRequired,
-    account: PropTypes.string,
-    balance: PropTypes.number
-};
-
-PropTypeComponent.defaultProps = {
-    name: 'Unknown',
-    account: 'Unknown',
-    balance: 0
-}
-
-const MyStatelessComponent = props => (
-    <p>{props.hello}</p>
-);
-
-const MyComponent = props => (
-    <div>
-        <h1>My Component</h1>
-        <p>{props.children}</p>
-    </div>
-);
-
-let HOCGen = (Component, state) => class extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = state;
-    }
-
-    componentDidMount() {
-        setInterval(() => {
-            this.setState({count: this.state.count + 1});
-        }, 1000);
-    }
-
-    render() {
-        return <Component {...this.props} {...this.state}/>
-    }
-}
-
-class Comp1 extends React.Component {
-    render() {
-        return (
-            <div>
-                <p>Comp1</p>
-                {this.props.count}
-            </div>
-        )
-    }
-}
-
-class Comp2 extends React.Component {
-    render() {
-        return (
-            <div>
-                <p>Comp2</p>
-                {this.props.count}
-            </div>
-        )
-    }
-}
-
-// let WrappedComp1 = HOCGen(Comp1, {count: 0});
-// let WrappedComp2 = HOCGen(Comp2, {count: 999});
+import {WrappedComponentOne} from "./components/ComponentToBeWrappedOne";
+import {WrappedComponentTwo} from "./components/ComponentToBeWrappedTwo";
 
 class App extends React.Component {
     constructor(props) {
@@ -131,14 +52,14 @@ class App extends React.Component {
         })
         return (
             <div className="App">
-                <FocusInputBox/>
-                <PropTypeComponent name='Jimmy' account={'Savings'} balance={3.25}/>
-                <PropTypeComponent name='Sally' account={'Checking'} balance={99.88}/>
-                <PropTypeComponent/>
-                {/*<WrappedComp1/>*/}
-                {/*<WrappedComp2/>*/}
+                {/*<FocusInputBox/>*/}
+                {/*<PropTypeComponent name='Jimmy' account={'Savings'} balance={3.25}/>*/}
+                {/*<PropTypeComponent name='Sally' account={'Checking'} balance={99.88}/>*/}
+                {/*<PropTypeComponent/>*/}
+                {/*<WrappedComponentOne/>*/}
+                {/*<WrappedComponentTwo/>*/}
                 {/*<MyStatelessComponent hello="I'm a stateless component"/>*/}
-                {/*<MyComponent>Some content for my component</MyComponent>*/}
+                {/*<HasChildrenComponent>Some content for my component</HasChildrenComponent>*/}
                 {profiles}
                 <AddProfile addUser={this.addUser}/>
             </div>
