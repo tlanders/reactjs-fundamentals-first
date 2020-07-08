@@ -1,11 +1,12 @@
 import React from 'react';
 // import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 
 import Profile from './components/Profile';
 import AddProfile from './components/AddProfile';
 import {WrappedComponentOne} from "./components/ComponentToBeWrappedOne";
 import {WrappedComponentTwo} from "./components/ComponentToBeWrappedTwo";
+import {styles} from "./styles";
 
 class App extends React.Component {
     constructor(props) {
@@ -53,7 +54,7 @@ class App extends React.Component {
             )
         })
         return (
-            <div className="App">
+            <div className="App" style={styles}>
                 {/*<FocusInputBox/>*/}
                 {/*<PropTypeComponent name='Jimmy' account={'Savings'} balance={3.25}/>*/}
                 {/*<PropTypeComponent name='Sally' account={'Checking'} balance={99.88}/>*/}
