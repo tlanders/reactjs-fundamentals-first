@@ -19,3 +19,10 @@ export const User2 = props => (
     </div>
 );
 
+export const User3 = ({name, job}) => (
+    <div>
+        <p>Hello3!</p>
+        <p>Name: {name}</p>
+        <p>Job: {job}.</p>
+    </div>
+);

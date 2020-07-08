@@ -7,7 +7,7 @@ import AddProfile from './components/AddProfile';
 import {WrappedComponentOne} from "./components/ComponentToBeWrappedOne";
 import {WrappedComponentTwo} from "./components/ComponentToBeWrappedTwo";
 import {styles} from "./styles";
-import {User, User2} from "./components/functionComponents";
+import {User, User2, User3} from "./components/functionComponents";
 
 class App extends React.Component {
     constructor(props) {
@@ -58,6 +58,7 @@ class App extends React.Component {
             <div className="App">
                 <User name={"Charlie"} job={"instructor"}/>
                 <User2 name={"Billy"} job={"preacher"}/>
+                <User3 name={"Jayne"} job={"student"}/>
                 {/*<FocusInputBox/>*/}
                 {/*<PropTypeComponent name='Jimmy' account={'Savings'} balance={3.25}/>*/}
                 {/*<PropTypeComponent name='Sally' account={'Checking'} balance={99.88}/>*/}
