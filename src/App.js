@@ -23,6 +23,32 @@ function Counter() {
     );
 }
 
+function Vote({option1, option2}) {
+    const [option1Counter, setCount1] = useState(0);
+    const [option2Counter, setCount2] = useState(0);
+
+    let results;
+    if(option1Counter > option2Counter) {
+        results = `${option1} is the winner!`;
+    } else if(option1Counter < option2Counter) {
+        results = `${option2} is the winner!`;
+    } else {
+        results = "It's a tie!";
+    }
+    return (
+        <div>
+            <p>Voting Results: {results}</p>
+            <hr/>
+            <p>{option1} votes: {option1Counter}</p>
+            <button onClick={() => setCount1(option1Counter + 1)}>Vote for {option1}</button>
+
+            <p>{option2} votes: {option2Counter}</p>
+            <button onClick={() => setCount2(option2Counter + 1)}>Vote for {option2}</button>
+            <hr/>
+        </div>
+    );
+}
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -70,7 +96,8 @@ class App extends React.Component {
         })
         return (
             <div className="App">
-                <Counter/>
+                <Vote option1='cats' option2='dogs'/>
+                {/*<Counter/>*/}
                 {/*<User name={"Charlie"} job={"instructor"}/>*/}
                 {/*<User2 name={"Billy"} job={"preacher"}/>*/}
                 {/*<User3 name={"Jayne"} job={"student"}/>*/}
