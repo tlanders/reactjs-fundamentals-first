@@ -39,12 +39,18 @@ function Vote({option1, option2}) {
         <div>
             <p>Voting Results: {results}</p>
             <hr/>
-            <p>{option1} votes: {option1Counter}</p>
-            <button onClick={() => setCount1(option1Counter + 1)}>Vote for {option1}</button>
-
-            <p>{option2} votes: {option2Counter}</p>
-            <button onClick={() => setCount2(option2Counter + 1)}>Vote for {option2}</button>
+            <VoteButton item={option1} itemCounter={option1Counter} itemSetState={setCount1}/>
+            <VoteButton item={option2} itemCounter={option2Counter} itemSetState={setCount2}/>
             <hr/>
+        </div>
+    );
+}
+
+function VoteButton({item, itemCounter, itemSetState}) {
+    return (
+        <div>
+            <p>{item} votes: {itemCounter}</p>
+            <button onClick={() => itemSetState(itemCounter + 1)}>Vote for {item}</button>
         </div>
     );
 }
