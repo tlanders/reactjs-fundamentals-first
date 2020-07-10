@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
@@ -8,6 +8,20 @@ import {WrappedComponentOne} from "./components/ComponentToBeWrappedOne";
 import {WrappedComponentTwo} from "./components/ComponentToBeWrappedTwo";
 import {styles} from "./styles";
 import {User, User2, User3} from "./components/functionComponents";
+
+function Counter() {
+    const [count, setCount] = useState(0);
+    console.log(count);
+    // debugger;
+    return (
+        <div>
+            <p>Count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>
+                Update Count
+            </button>
+        </div>
+    );
+}
 
 class App extends React.Component {
     constructor(props) {
@@ -56,9 +70,10 @@ class App extends React.Component {
         })
         return (
             <div className="App">
-                <User name={"Charlie"} job={"instructor"}/>
-                <User2 name={"Billy"} job={"preacher"}/>
-                <User3 name={"Jayne"} job={"student"}/>
+                <Counter/>
+                {/*<User name={"Charlie"} job={"instructor"}/>*/}
+                {/*<User2 name={"Billy"} job={"preacher"}/>*/}
+                {/*<User3 name={"Jayne"} job={"student"}/>*/}
                 {/*<FocusInputBox/>*/}
                 {/*<PropTypeComponent name='Jimmy' account={'Savings'} balance={3.25}/>*/}
                 {/*<PropTypeComponent name='Sally' account={'Checking'} balance={99.88}/>*/}
